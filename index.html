@@ -12,41 +12,20 @@
     <div id="root"></div>
     <script type="text/babel">
       (() => {
-        function Counter(props) {
-          function countUp(color) {
-            alert(color);
-          }
-          return (
-            <li style={{backgroundColor:props.color}} onClick={() =>
-              countUp(props.color)}>
-              0
-            </li>
-          )
-        }
-
-        function Counter2(props) {
-          function countUp(e, color) {
-            e.preventDefault();
-            alert(color);
-          }
-          return (
-            <li style={{backgroundColor:props.color}}>
-              <a href="#" onClick={e => countUp(e, props.color)}>
-                0
-              </a>
-            </li>
-          )
-        }
-
-        class Counter3 extends React.Component {
+        class Counter extends React.Component {
           constructor(props) {
             super(props);
             this.state = {
-              count: 10
+              count: 0
             };
+            this.countUp = this.countUp.bind(this);
           }
           countUp(color) {
-            alert(color);
+            this.setState(prevState => {
+              return {
+                count: prevState.count + 1
+              }
+            });
           }
           render() {
             return (
@@ -60,23 +39,10 @@
 
         ReactDOM.render(
           <div className="container">
-            <a>liにonClickをくっつけたアラート</a>
             <ul>
               <Counter color="tomato"/>
               <Counter color="skyblue"/>
               <Counter color="limegreen"/>
-            </ul>
-            <a>aにonClickをくっつけたアラート</a>
-            <ul>
-              <Counter2 color="tomato"/>
-              <Counter2 color="skyblue"/>
-              <Counter2 color="limegreen"/>
-            </ul>
-            <a>classを使ったアラート</a>
-            <ul>
-              <Counter3 color="tomato"/>
-              <Counter3 color="skyblue"/>
-              <Counter3 color="limegreen"/>
             </ul>
           </div>,
           document.getElementById('root')
