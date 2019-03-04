@@ -39,6 +39,12 @@
         }
 
         class Counter3 extends React.Component {
+          constructor(props) {
+            super(props);
+            this.state = {
+              count: 10
+            };
+          }
           countUp(color) {
             alert(color);
           }
@@ -46,7 +52,7 @@
             return (
               <li style={{backgroundColor:this.props.color}} onClick={() =>
                 this.countUp(this.props.color)}>
-                0
+                {this.state.count}
               </li>
             );
           }
