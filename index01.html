@@ -12,12 +12,18 @@
     <div id="root"></div>
     <script type="text/babel">
       (() => {
+        function showMessage() {
+          alert('Hello');
+        }
         const name = 'taro';
         ReactDOM.render(
           <div>
             <p>Hello! {name.toUpperCase()}</p>
             <hr/>
             <p>Hello! {name.toUpperCase()}</p>
+            <div className="box"></div>
+            <div style={{width: 100, height: 100, backgroundColor: 'tomato'}}></div>
+            <button style={{width:100, height: 100}}onClick={showMessage}>Button</button>
           </div>,
           document.getElementById('root')
         );
