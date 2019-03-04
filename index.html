@@ -38,17 +38,39 @@
           )
         }
 
+        class Counter3 extends React.Component {
+          countUp(color) {
+            alert(color);
+          }
+          render() {
+            return (
+              <li style={{backgroundColor:this.props.color}} onClick={() =>
+                this.countUp(this.props.color)}>
+                0
+              </li>
+            );
+          }
+        }
+
         ReactDOM.render(
           <div className="container">
+            <a>liにonClickをくっつけたアラート</a>
             <ul>
               <Counter color="tomato"/>
               <Counter color="skyblue"/>
               <Counter color="limegreen"/>
             </ul>
+            <a>aにonClickをくっつけたアラート</a>
             <ul>
               <Counter2 color="tomato"/>
               <Counter2 color="skyblue"/>
               <Counter2 color="limegreen"/>
+            </ul>
+            <a>classを使ったアラート</a>
+            <ul>
+              <Counter3 color="tomato"/>
+              <Counter3 color="skyblue"/>
+              <Counter3 color="limegreen"/>
             </ul>
           </div>,
           document.getElementById('root')
